@@ -38,8 +38,8 @@ public class App {
                 case "1":
                     System.out.println("Input count of list elements:");
                     final String nStr = br.readLine();
-                    List<Integer> getList = (List<Integer>) generateRandomBitArray(getIntFromInput(nStr));
-                    List<Integer> reversedList = (List<Integer>) reversList(getList);
+                    final List<Integer> getList = (List<Integer>) generateRandomBitArray(getIntFromInput(nStr));
+                    final List<Integer> reversedList = (List<Integer>) reversList(getList);
                     System.out.println("Generated list: " + getList);
                     System.out.println("Reversed list: " + reversedList);
                     break;
@@ -61,7 +61,7 @@ public class App {
                     int count = 12;
                     System.out.println("Input count value or skip, by default it's 12:");
                     String countStr = br.readLine();
-                    List<Integer> listForFix = generateList(count, countStr);
+                    final List<Integer> listForFix = generateList(count, countStr);
                     System.out.println("Main list: " + listForFix);
                     System.out.println("Fixed List: " + fixLessSix(listForFix));
                     break;
@@ -75,7 +75,7 @@ public class App {
                     count = 10;
                     System.out.println("Input count value or skip, by default it's 10:");
                     countStr = br.readLine();
-                    List<Integer> listForFind = generateList(count, countStr);
+                    final List<Integer> listForFind = generateList(count, countStr);
                     Finder finder = new Finder(listForFind);
                     System.out.println("Your generated list: " + listForFind);
                     System.out.println("min list element: " + finder.getMin() + ", max list element: " + finder.getMax());
@@ -84,8 +84,7 @@ public class App {
                     count = 10;
                     System.out.println("Input count value or skip, by default it's 10:");
                     countStr = br.readLine();
-                    List<Integer> listForCompare = generateList(count, countStr);
-                    //int[] listForCompare = new int[]{1, 2, 1, 1, 1};
+                    final List<Integer> listForCompare = generateList(count, countStr);
                     System.out.println("Your generated list: " + listForCompare);
                     System.out.println("Is sums equal? " + isSumEquals(listForCompare));
                     break;
@@ -95,8 +94,7 @@ public class App {
                     countStr = br.readLine();
                     System.out.println("Input n steps for Shift list:");
                     String shiftStr = br.readLine();
-                    List<Integer> listForShift = generateList(count, countStr);
-                    //int[] listForCompare = new int[]{1, 2, 1, 1, 1};
+                    final List<Integer> listForShift = generateList(count, countStr);
                     System.out.println("Your generated list: " + listForShift);
                     System.out.println("Shifted list " + shiftList(listForShift, getIntFromInput(shiftStr)));
                     break;
@@ -109,7 +107,7 @@ public class App {
     }
 
     private static List<Integer> shiftList(List<Integer> listForShift, Integer intFromInput) {
-        List<Integer> newArray = new ArrayList<Integer>();
+        final List<Integer> newArray = new ArrayList<Integer>();
         if (intFromInput > 0) {
             newArray.addAll(listForShift.subList((listForShift.size() - intFromInput), listForShift.size()));
             newArray.addAll(listForShift.subList(0, (listForShift.size() - intFromInput)));
@@ -135,7 +133,7 @@ public class App {
     }
 
     private static List<Integer> generateRandomBitArray(int n) {
-        ArrayList<Integer> list = new ArrayList<Integer>(n);
+        final List<Integer> list = new ArrayList<Integer>(n);
         Random rnd = new Random();
         for (int i = 0; i < n; i++) {
             final int el = rnd.nextInt(n * (i + 1));
@@ -149,7 +147,7 @@ public class App {
     }
 
     private static List<Integer> reversList(List<Integer> list) {
-        ArrayList<Integer> reversedList = new ArrayList<Integer>();
+        final List<Integer> reversedList = new ArrayList<Integer>();
         for (Integer aList : list) {
             if (aList == 0) {
                 reversedList.add(1);
@@ -161,15 +159,11 @@ public class App {
     }
 
     private static Integer getIntFromInput(String input) {
-        if (!input.isEmpty()) {
-            return Integer.parseInt(input);
-        } else {
-            return 1;
-        }
+        return (!input.isEmpty()) ? Integer.parseInt(input) : 1;
     }
 
     private static List<Integer> fixLessSix(List<Integer> inputList) {
-        ArrayList<Integer> fixedList = new ArrayList<Integer>();
+        final List<Integer> fixedList = new ArrayList<Integer>();
         for (Integer anInputList : inputList) {
             if (anInputList < 6) {
                 fixedList.add(anInputList * 2);
@@ -181,7 +175,7 @@ public class App {
     }
 
     private static List<Integer> generateList(int count, String countStr) {
-        ArrayList<Integer> generatedList = new ArrayList<Integer>();
+        final List<Integer> generatedList = new ArrayList<Integer>();
         int newCount = getIntFromInput(countStr);
         if (newCount > 1) {
             count = newCount;
@@ -193,22 +187,20 @@ public class App {
         return generatedList;
     }
 
-    private static boolean isSumEquals(/**int[] inputList){**/List<Integer> inputList) {
+    private static boolean isSumEquals(List<Integer> inputList) {
         int leftSum = 0;
         int rightSum = 0;
 
-        for (int i = 0; i < inputList./**length**/size(); i++) {
+        for (int i = 0; i < inputList.size(); i++) {
             leftSum = 0;
             rightSum = 0;
 
             for (int a = 0; a < i; a++) {
                 leftSum += inputList.get(a);
-                //leftSum += inputList[a];//.get(a);
             }
 
-            for (int b = i; b < inputList./**length**/size(); b++) {
+            for (int b = i; b < inputList.size(); b++) {
                 rightSum += inputList.get(b);
-                //rightSum += inputList[b];
             }
 
             if (rightSum == leftSum) return true;
