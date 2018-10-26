@@ -27,10 +27,10 @@ class FindTheHiddenWord {
     }
 
     void runGame() throws IOException {
-        System.out.println("I hidden one of them word from " + Arrays.toString(words));
         hiddenWord = hideWord(words);
         final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
+            System.out.println("I hidden one of them word from " + Arrays.toString(words));
             System.out.println("Input word, that I was able to hide");
             String userWord = br.readLine();
             if (!userWord.isEmpty()) {
