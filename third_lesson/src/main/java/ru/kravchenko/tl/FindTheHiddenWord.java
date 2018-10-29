@@ -20,7 +20,7 @@ class FindTheHiddenWord {
             "pumpkin", "potato"};
     protected String foundWord;
     protected String hiddenWord;
-    protected Map<Integer, Character> tmpWord = new HashMap<Integer, Character>();
+    final protected Map<Integer, Character> tmpWord = new HashMap<Integer, Character>();
 
     FindTheHiddenWord() {
 

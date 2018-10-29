@@ -15,7 +15,7 @@ class FindCorrectNumber {
         final Random rnd = new Random();
         final int secretNumber = rnd.nextInt(9);
         int life = 3;
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Input num that I was able to guess");
         while (life > 0) {
             final String inputStr = br.readLine();
