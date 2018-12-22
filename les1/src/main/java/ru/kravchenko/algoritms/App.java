@@ -1,7 +1,7 @@
 package ru.kravchenko.algoritms;
 
 /**
- * Hello world!
+ *
  *
  */
 public class App 
