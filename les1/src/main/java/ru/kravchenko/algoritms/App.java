@@ -1,6 +1,8 @@
 package ru.kravchenko.algoritms;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -20,9 +22,15 @@ public class App
         printArray(createdArray);
 
         System.out.println("Added element to end of Array: " + newNum);
-        printArray(addElementToArray(createdArray, newNum));
+        createdArray = addElementToArray(createdArray, newNum);
 
 
+        System.out.println("Find Index of " + newNum);
+        System.out.println("It was " + findElementIndexByValue(createdArray, newNum));
+
+        System.out.println("Delete " + newNum + " from Array");
+        createdArray = deleteElementByValue(createdArray, newNum).stream().mapToInt(i-> (int) i).toArray();
+        System.out.println("Find " +newNum + " in Array. Result is " + findElementIndexByValue(createdArray, newNum));
     }
 
     public static int[] createRandomArray(int arraySize){
@@ -46,7 +54,36 @@ public class App
         }
     }
 
-//    public static int findElementByIndex(int[] array, int index){
-//
-//    }
+    public static int findElementValueByIndex(int[] array, int index){
+        if (index < array.length){
+            return array[index];
+        } else {
+            return -1;
+        }
+    }
+
+    public static List findElementIndexByValue(int[] array, int value){
+        List<Integer> foundItems = new ArrayList<>();
+        for (int i=0; i < array.length; i++) {
+            if (array[i] == value){
+                foundItems.add(i);
+            }
+        }
+        return foundItems;
+    }
+
+    public static List deleteElementByValue(int[] array, int value){
+        try{
+            List<Integer> res = new ArrayList();
+            for(int item : array) {
+                if (item != value) {
+                    res.add(item);
+                }
+            }
+            return res;
+        }catch (Exception e){
+            return Arrays.asList(array);
+        }
+
+    }
 }
