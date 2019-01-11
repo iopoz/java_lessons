@@ -20,10 +20,6 @@ public class LinkedListIteratorImplementation implements LinkedListIterator {
         previous = null;
     }
 
-//    @Override
-//    public boolean hasNext() {
-//        return current != null;
-//    }
 
     @Override
     public Node next() {
@@ -39,7 +35,7 @@ public class LinkedListIteratorImplementation implements LinkedListIterator {
 
     @Override
     public boolean atEnd() {
-        return current == null;//!hasNext();
+        return current == null;
     }
 
     @Override

@@ -5,8 +5,6 @@ public interface LinkedListIterator extends Iterable {
     //перемещение в начало списка;
     void reset();
 
-//    boolean hasNext();
-
     //перемещение итератора к следующему элементу
     Node next();
 
